@@ -51,10 +51,11 @@ router.post("/", async (req, res) => {
 
   if (primaryMatches.length > 0) {
     // Pick oldest primary by createdAt
-    primaryContact = primaryMatches.reduce((oldest, curr) => {
+    // primaryContact = primaryMatches.reduce((oldest, curr) => {
+    primaryContact = primaryMatches.reduce((oldest: any, curr) => {
       if (!oldest) return curr;
       return curr.createdAt < oldest.createdAt ? curr : oldest;
-    }, null);
+    }, null as any);
   } else {
     // No primary in matches, so find primary of the first secondary contact
     const secondaryContact = matchingContacts[0];
